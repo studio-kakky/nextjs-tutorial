@@ -1,12 +1,11 @@
 import { BaseGetInputModel } from '../../models/base/api/get-input-model';
-import { getAuthorizationHeader } from '../../lib/get-authorized-header';
-import { RequestParams } from '../../models/request-params';
+import { getAuthorizationHeader } from '../lib/get-authorized-header';
 
 export interface YelpBusinessGetApiParams {
   location?: string;
   coordinates?: {
-    lat: string;
-    lng: string;
+    lat: number;
+    lng: number;
   };
   limit?: number;
   offset?: number;
@@ -22,24 +21,24 @@ export class YelpBusinessGetApiInputModel extends BaseGetInputModel {
     return getAuthorizationHeader();
   }
 
-  getQueries(): RequestParams {
+  getQueries(): Record<string, string> {
     const location = !!this.params.location ? { location: this.params.location } : {};
 
     const coordinates = !!this.params.coordinates ? this.params.coordinates : {};
 
-    const limit = !!this.params.limit ? { limit: this.params.limit } : {};
-    const offset = !!this.params.offset ? { offset: this.params.offset } : {};
+    const limit = !!this.params.limit ? { limit: this.params.limit.toString() } : {};
+    const offset = !!this.params.offset ? { offset: this.params.offset.toString() } : {};
     const price = !!this.params.budgetLevel ? { price: this.params.budgetLevel.toString() } : {};
 
     const params = {
-      ...location,
       ...coordinates,
+      ...location,
       ...offset,
       ...limit,
       ...price,
-    } as RequestParams;
+    };
 
-    if (!params.location && !params.coordinates) {
+    if (!this.params.location && !this.params.coordinates) {
       return {
         ...params,
         location: 'Tokyo',

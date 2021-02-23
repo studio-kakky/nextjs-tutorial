@@ -1,15 +1,13 @@
-import { RequestParams } from '../../request-params';
-
 export abstract class BaseGetInputModel {
-  getHeaders(): RequestParams {
+  getHeaders(): Record<string, string> {
     return {};
   }
 
-  getQueries(): RequestParams {
+  getQueries(): Record<string, string> {
     return {};
   }
 
-  getUrlVariable(): RequestParams {
+  getUrlVariable(): Record<string, string> {
     return {};
   }
 }
