@@ -2,10 +2,10 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 
-import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
-import Date from '../components/date';
+import Layout, { siteTitle } from '../shared/layout/layout';
+import utilStyles from '../shared/styles/utils.module.css';
+import { getSortedPostsData } from '../shared/lib/posts';
+import Date from '../shared/components/date/date';
 
 export default function Home({
   allPostsData,
@@ -42,6 +42,20 @@ export default function Home({
               </small>
             </li>
           ))}
+        </ul>
+      </section>
+      <section>
+        <ul>
+          <li>
+            <Link href={`/search?location=yokohama`}>
+              <a>横浜</a>
+            </Link>
+          </li>
+          <li>
+            <Link href={`/search?location=tokyo`}>
+              <a>東京</a>
+            </Link>
+          </li>
         </ul>
       </section>
     </Layout>

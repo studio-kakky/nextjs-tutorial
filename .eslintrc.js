@@ -22,6 +22,7 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
+    'no-extra-boolean-cast': 'off',
   },
   extends: [
     'eslint:recommended',
@@ -31,4 +32,4 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
   ],
-}
+};
