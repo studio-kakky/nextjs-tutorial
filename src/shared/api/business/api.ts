@@ -8,7 +8,7 @@ export const getYelpBusiness = async (
   model: YelpBusinessGetApiInputModel,
 ): Promise<YelpGetBusinessSearchApiResponse> => {
   const params = new URLSearchParams(model.getQueries());
-  const res = await fetch(`${endpointURL}${params.toString()}`, {
+  const res = await fetch(`${endpointURL}?${params.toString()}`, {
     method: 'GET',
     mode: 'cors',
     headers: {
