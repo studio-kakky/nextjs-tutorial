@@ -13,7 +13,7 @@ export default function Search(props: Props): JSX.Element {
   return (
     <Layout>
       {props.restaurants.map((v) => (
-        <RestaurantItem restaurant={v} />
+        <RestaurantItem restaurant={v} key={v.id} />
       ))}
     </Layout>
   );
