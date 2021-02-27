@@ -6,7 +6,8 @@
     "dev": "next dev -p 4500",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "test": "jest"
   },
   "dependencies": {
     "date-fns": "^2.17.0",
