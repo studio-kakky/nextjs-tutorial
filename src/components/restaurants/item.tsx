@@ -3,14 +3,20 @@ import { RestaurantViewModel } from './view-model/view-model';
 
 interface Props {
   vm: RestaurantViewModel;
+  onToggleChecked: (id: string) => void;
 }
 
-export default function RestaurantItem({ vm }: Props): JSX.Element {
+export default function RestaurantItem({ vm, onToggleChecked }: Props): JSX.Element {
   return (
     <div className="RestaurantListItem">
-      <header className="RestaurantListItem_Header">
-        <label className="RestaurantListItem_Header_Checkbox">
-          <input type="checkbox" className="RestaurantListItem_Header_CheckboxInput" checked={vm.isChecked} />
+      <header className={vm.isChecked ? 'RestaurantListItem_Header -checked' : 'RestaurantListItem_Header'}>
+        <label className="RestaurantListItem_Header_Checkbox checked">
+          <input
+            type="checkbox"
+            className="RestaurantListItem_Header_CheckboxInput"
+            defaultChecked={vm.isChecked}
+            onClick={() => onToggleChecked(vm.id)}
+          />
         </label>
         <h3 className="RestaurantListItem_Header_h">{vm.name}</h3>
       </header>

@@ -10,7 +10,10 @@ export const styles = css`
       display: flex;
       align-items: center;
       padding: 10px;
-      background-color: #fcdce4;
+      background-color: #ccc;
+      &.-checked {
+        background-color: #fcdce4;
+      }
       &_h {
         margin: 5px 0;
       }
