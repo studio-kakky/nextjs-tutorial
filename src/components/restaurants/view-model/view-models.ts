@@ -11,10 +11,6 @@ export class RestaurantViewModels {
     return this.list;
   }
 
-  get(id: string): RestaurantViewModel | undefined {
-    return this.list.find((v) => v.id === id);
-  }
-
   toggleCheck(id: string): RestaurantViewModels {
     return new RestaurantViewModels(
       this.list.map((v) => {
@@ -22,7 +18,7 @@ export class RestaurantViewModels {
           return v.toggleCheck();
         }
 
-        return v;
+        return v.clone();
       }),
     );
   }
@@ -34,7 +30,7 @@ export class RestaurantViewModels {
           return v.toggleFavorite();
         }
 
-        return v;
+        return v.clone();
       }),
     );
   }
@@ -45,5 +41,11 @@ export class RestaurantViewModels {
 
   uncheckAll(): RestaurantViewModels {
     return new RestaurantViewModels(this.toArray().map((v) => v.uncheck()));
+  }
+
+  merge(others: RestaurantViewModels): RestaurantViewModels {
+    const currentList = this.list.map((v) => v.clone());
+    const othersList = others.toArray().map((v) => v.clone());
+    return new RestaurantViewModels(currentList.concat(othersList));
   }
 }

@@ -53,6 +53,10 @@ export class RestaurantViewModel {
     return this.params.isFavorite;
   }
 
+  clone(): RestaurantViewModel {
+    return new RestaurantViewModel(this.params);
+  }
+
   toggleCheck(): RestaurantViewModel {
     return new RestaurantViewModel({
       ...this.params,
