@@ -1,5 +1,5 @@
-import Layout from '../../shared/layout/layout';
-import RestaurantItem from '../../shared/components/restaurant/restaurant';
+import Layout from '../../layout/layout';
+import RestaurantItem from '../../components/restaurant/restaurant';
 import { Restaurant } from '../../shared/models/restaurant/restaurant';
 import { GetServerSideProps } from 'next';
 import { getYelpBusiness } from '../../shared/api/business/api';

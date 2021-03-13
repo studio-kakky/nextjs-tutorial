@@ -1,4 +1,4 @@
-import { Restaurant } from '../../models/restaurant/restaurant';
+import { Restaurant } from '../../shared/models/restaurant/restaurant';
 import style from './styles.module.scss';
 
 interface Props {
