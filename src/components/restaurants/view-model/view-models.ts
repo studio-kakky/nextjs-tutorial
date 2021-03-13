@@ -7,11 +7,39 @@ export class RestaurantViewModels {
     return this.list;
   }
 
-  checkAll() {
-    this.list.forEach((v) => v.check());
+  get(id: string): RestaurantViewModel | undefined {
+    return this.list.find((v) => v.id === id);
   }
 
-  uncheckAll() {
-    this.list.forEach((v) => v.uncheck());
+  toggleCheck(id: string): RestaurantViewModels {
+    return new RestaurantViewModels(
+      this.list.map((v) => {
+        if (v.id === id) {
+          return v.toggleCheck();
+        }
+
+        return v;
+      }),
+    );
+  }
+
+  toggleFavorite(id: string): RestaurantViewModels {
+    return new RestaurantViewModels(
+      this.list.map((v) => {
+        if (v.id === id) {
+          return v.toggleFavorite();
+        }
+
+        return v;
+      }),
+    );
+  }
+
+  checkAll(): RestaurantViewModels {
+    return new RestaurantViewModels(this.toArray().map((v) => v.check()));
+  }
+
+  uncheckAll(): RestaurantViewModels {
+    return new RestaurantViewModels(this.toArray().map((v) => v.uncheck()));
   }
 }

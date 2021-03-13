@@ -1,6 +1,7 @@
 import { Restaurant } from '../../../shared/models/restaurant/restaurant';
 
 interface ViewModelParams {
+  id: string;
   budget: string;
   address: string;
   phoneNumber: string;
@@ -12,6 +13,10 @@ interface ViewModelParams {
 export class RestaurantViewModel {
   constructor(private params: ViewModelParams) {
     //
+  }
+
+  get id(): string {
+    return this.params.id;
   }
 
   get budget(): string {
@@ -38,20 +43,32 @@ export class RestaurantViewModel {
     return this.params.isFavorite;
   }
 
-  toggleCheck() {
-    this.params.isChecked = !this.isChecked;
+  toggleCheck(): RestaurantViewModel {
+    return new RestaurantViewModel({
+      ...this.params,
+      isChecked: !this.params.isChecked,
+    });
   }
 
-  check() {
-    this.params.isChecked = true;
+  check(): RestaurantViewModel {
+    return new RestaurantViewModel({
+      ...this.params,
+      isChecked: true,
+    });
   }
 
-  uncheck() {
-    this.params.isChecked = false;
+  uncheck(): RestaurantViewModel {
+    return new RestaurantViewModel({
+      ...this.params,
+      isChecked: false,
+    });
   }
 
-  toggleFavorite() {
-    this.params.isFavorite = !this.isFavorite;
+  toggleFavorite(): RestaurantViewModel {
+    return new RestaurantViewModel({
+      ...this.params,
+      isFavorite: !this.isFavorite,
+    });
   }
 }
 
@@ -61,6 +78,7 @@ export const makeViewModel = (restaurant: Restaurant): RestaurantViewModel => {
   }, '');
 
   const params = {
+    id: restaurant.id,
     budget,
     address: restaurant.location.displayAddress.join(' '),
     phoneNumber: restaurant.phoneNumber,
