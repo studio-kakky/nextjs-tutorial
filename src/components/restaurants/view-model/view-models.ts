@@ -1,6 +1,10 @@
 import { RestaurantViewModel } from './view-model';
 
 export class RestaurantViewModels {
+  static blank(): RestaurantViewModels {
+    return new RestaurantViewModels([]);
+  }
+
   constructor(private list: RestaurantViewModel[]) {}
 
   toArray(): RestaurantViewModel[] {

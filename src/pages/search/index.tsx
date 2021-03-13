@@ -5,17 +5,21 @@ import { GetServerSideProps } from 'next';
 import { getYelpBusiness } from '../../shared/api/business/api';
 import { YelpBusinessApiGetInputModel } from '../../shared/api/business/get-input-model';
 import { adapt } from '../../shared/models/restaurant/adapt';
+import { makeViewModel } from '../../components/restaurants/view-model/view-model';
+import { RestaurantViewModels } from '../../components/restaurants/view-model/view-models';
+import Restaurants from '../../components/restaurants/restaurants';
 
 interface Props {
   restaurants: Restaurant[];
 }
 
 export default function Search(props: Props): JSX.Element {
+  const list = props.restaurants.map((v) => makeViewModel(v));
+  const viewModels = new RestaurantViewModels(list);
+
   return (
     <Layout>
-      {props.restaurants.map((v) => (
-        <RestaurantItem restaurant={v} key={v.id} />
-      ))}
+      <Restaurants vms={viewModels} />
     </Layout>
   );
 }

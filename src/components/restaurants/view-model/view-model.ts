@@ -2,6 +2,8 @@ import { Restaurant } from '../../../shared/models/restaurant/restaurant';
 
 interface ViewModelParams {
   id: string;
+  name: string;
+  thumbnailUrl: string;
   budget: string;
   address: string;
   phoneNumber: string;
@@ -17,6 +19,14 @@ export class RestaurantViewModel {
 
   get id(): string {
     return this.params.id;
+  }
+
+  get name(): string {
+    return this.params.name;
+  }
+
+  get thumbNailUrl(): string {
+    return this.params.thumbnailUrl;
   }
 
   get budget(): string {
@@ -79,6 +89,8 @@ export const makeViewModel = (restaurant: Restaurant): RestaurantViewModel => {
 
   const params = {
     id: restaurant.id,
+    name: restaurant.aliasName,
+    thumbnailUrl: restaurant.thumbnailUrl,
     budget,
     address: restaurant.location.displayAddress.join(' '),
     phoneNumber: restaurant.phoneNumber,
