@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import { getYelpBusiness } from '../../shared/api/business/api';
 import { YelpBusinessApiGetInputModel } from '../../shared/api/business/get-input-model';
 import { adapt } from '../../shared/models/restaurant/adapt';
+
 interface Props {
   restaurants: Restaurant[];
 }
