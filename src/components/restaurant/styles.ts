@@ -79,6 +79,7 @@ export const styles = css`
         font-weight: normal;
         padding: 5px;
         background: #ddd;
+        width: 100px;
       }
       &_cell {
         padding: 5px 0 5px 10px;
