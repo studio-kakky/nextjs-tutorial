@@ -11,8 +11,42 @@ export const styles = css`
       align-items: center;
       padding: 10px;
       background-color: #fcdce4;
+      &_h {
+        margin: 5px 0;
+      }
       &_Checkbox {
-        margin-right: 10px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin-right: 20px;
+        position: relative;
+        &Input {
+          width: 0;
+          &:before {
+            position: absolute;
+            top: 50%;
+            content: '';
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transform: translateY(-50%);
+            background: #fff;
+          }
+          &:checked {
+            &:before {
+              background: #0070f3;
+            }
+            &:after {
+              content: url('/images/icon/check-mark.svg');
+              display: block;
+              position: absolute;
+              top: 2px;
+              left: 6px;
+            }
+          }
+        }
       }
     }
 
@@ -42,7 +76,12 @@ export const styles = css`
         }
       }
       &_head {
+        font-weight: normal;
+        padding: 5px;
         background: #ddd;
+      }
+      &_cell {
+        padding: 5px 0 5px 10px;
       }
     }
   }

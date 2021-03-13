@@ -9,7 +9,9 @@ export default function RestaurantItem({ restaurant }: Props): JSX.Element {
   return (
     <div className="RestaurantListItem">
       <header className="RestaurantListItem_Header">
-        <input type="checkbox" className="RestaurantListItem_Header_Checkbox" />
+        <label className="RestaurantListItem_Header_Checkbox">
+          <input type="checkbox" className="RestaurantListItem_Header_CheckboxInput" />
+        </label>
         <h3 className="RestaurantListItem_Header_h">{restaurant.aliasName}</h3>
       </header>
       <div className="RestaurantListItem_Body">
@@ -37,6 +39,7 @@ export default function RestaurantItem({ restaurant }: Props): JSX.Element {
           </tbody>
         </table>
       </div>
+
       <style jsx>{styles}</style>
     </div>
   );
