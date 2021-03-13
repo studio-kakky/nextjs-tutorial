@@ -16,12 +16,31 @@ interface Props {
 }
 
 export default function Search(props: Props): JSX.Element {
-  const list = props.restaurants.map(makeViewModel);
-  const [viewModels, setViewModels] = useState(new RestaurantViewModels(list));
+  const masterList = props.restaurants.map(makeViewModel);
+  const [viewModels, setViewModels] = useState(new RestaurantViewModels(masterList.slice(0, 10)));
+  const [page, setPage] = useState(1);
+
+  const loadMore = () => {
+    setPage(page + 1);
+    const nextList = masterList.slice(page * 10, page * 10 + 10);
+    const nextViewModels = new RestaurantViewModels(nextList);
+    setViewModels(viewModels.merge(nextViewModels));
+  };
+
+  const onToggleChecked = (id: string) => {
+    console.log(id);
+    setViewModels(viewModels.toggleCheck(id));
+  };
 
   return (
     <Layout>
-      <Restaurants vms={viewModels} />
+      <Restaurants vms={viewModels} onToggleChecked={onToggleChecked} />
+      <a onClick={loadMore}>もっと見る</a>
+      <style jsx>{`
+        a {
+          cursor: pointer;
+        }
+      `}</style>
     </Layout>
   );
 }

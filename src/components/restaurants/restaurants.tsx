@@ -4,17 +4,13 @@ import RestaurantItem from './item';
 
 interface Props {
   vms: RestaurantViewModels;
+  onToggleChecked: (id: string) => void;
 }
 
-export default function Restaurants({ vms }: Props): JSX.Element {
-  const [viewModels, setViewModels] = useState(vms);
-  const onToggleChecked = (id: string) => {
-    setViewModels(viewModels.toggleCheck(id));
-  };
-
+export default function Restaurants({ vms, onToggleChecked }: Props): JSX.Element {
   return (
     <>
-      {viewModels.toArray().map((v) => (
+      {vms.toArray().map((v) => (
         <RestaurantItem vm={v} key={v.id} onToggleChecked={onToggleChecked} />
       ))}
     </>

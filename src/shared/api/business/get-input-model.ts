@@ -1,7 +1,7 @@
 import { BaseGetInputModel } from '../../models/base/api/get-input-model';
 import { getAuthorizationHeader } from '../lib/get-authorized-header';
 
-const defaultLimit = 30;
+const defaultLimit = 50;
 
 export interface YelpBusinessGetApiParams {
   location?: string;
