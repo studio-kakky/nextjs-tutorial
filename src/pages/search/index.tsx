@@ -1,14 +1,16 @@
-import Layout from '../../layout/layout';
-import RestaurantItem from '../../components/restaurants/item';
-import { Restaurant } from '../../shared/models/restaurant/restaurant';
+import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+
+import Layout from '../../layout/layout';
+import { Restaurant } from '../../shared/models/restaurant/restaurant';
 import { getYelpBusiness } from '../../shared/api/business/api';
 import { YelpBusinessApiGetInputModel } from '../../shared/api/business/get-input-model';
 import { adapt } from '../../shared/models/restaurant/adapt';
 import { makeViewModel } from '../../components/restaurants/view-model/view-model';
 import { RestaurantViewModels } from '../../components/restaurants/view-model/view-models';
 import Restaurants from '../../components/restaurants/restaurants';
-import { useState } from 'react';
+import { executeExperience } from '../../shared/lib/kaizen-platform/execute-experience';
 
 interface Props {
   location: string;
@@ -19,6 +21,7 @@ export default function Search(props: Props): JSX.Element {
   const masterList = props.restaurants.map(makeViewModel);
   const [viewModels, setViewModels] = useState(new RestaurantViewModels(masterList.slice(0, 10)));
   const [page, setPage] = useState(1);
+  const router = useRouter();
 
   const loadMore = () => {
     setPage(page + 1);
@@ -31,6 +34,10 @@ export default function Search(props: Props): JSX.Element {
     console.log(id);
     setViewModels(viewModels.toggleCheck(id));
   };
+
+  useEffect(() => {
+    executeExperience(router);
+  });
 
   return (
     <Layout>

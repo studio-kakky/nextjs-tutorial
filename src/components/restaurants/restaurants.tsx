@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { RestaurantViewModels } from './view-model/view-models';
 import RestaurantItem from './item';
 
