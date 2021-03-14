@@ -1,8 +1,8 @@
 import { NextRouter } from 'next/dist/next-server/lib/router/router';
 
-export const executeExperience = (router: NextRouter) => {
+export const executeExperience = (router: NextRouter): void => {
   try {
-    if (!window || !window.hasOwnProperty('kzs')) {
+    if (!window || !window['kzs']) {
       return;
     }
 
