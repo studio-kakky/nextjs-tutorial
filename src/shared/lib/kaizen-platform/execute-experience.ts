@@ -17,7 +17,7 @@ export const executeExperience = (router: NextRouter): void => {
 
     setTimeout(() => {
       kzs('execute');
-    }, 0);
+    });
   } catch (e) {
     console.warn(e);
   }

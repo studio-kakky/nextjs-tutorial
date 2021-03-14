@@ -31,7 +31,6 @@ export default function Search(props: Props): JSX.Element {
   };
 
   const onToggleChecked = (id: string) => {
-    console.log(id);
     setViewModels(viewModels.toggleCheck(id));
   };
 
