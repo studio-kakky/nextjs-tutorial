@@ -9,8 +9,7 @@ describe('YelpBusinessApiGetInputModel', () => {
           lat: 1,
           lng: 1,
         },
-        limit: 10,
-        offset: 10,
+        pageNumber: 2,
         budgetLevel: 1,
       });
 
@@ -18,8 +17,8 @@ describe('YelpBusinessApiGetInputModel', () => {
         location: 'tokyo',
         lat: '1',
         lng: '1',
-        limit: '10',
-        offset: '10',
+        limit: '50',
+        offset: '50',
         price: '1',
       };
 
