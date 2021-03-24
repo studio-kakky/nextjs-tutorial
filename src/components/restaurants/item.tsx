@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { styles } from './styles';
 import { RestaurantViewModel } from './view-model/view-model';
 
@@ -45,7 +47,11 @@ export default function RestaurantItem({ vm, onToggleChecked }: Props): JSX.Elem
           </tbody>
         </table>
       </div>
-
+      <div className="Util">
+        <Link href={`/complete`}>
+          <a className="ConversionBtn">完了画面へ</a>
+        </Link>
+      </div>
       <style jsx>{styles}</style>
     </div>
   );
