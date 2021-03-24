@@ -9,9 +9,11 @@ interface Props {
 export default function Restaurants({ vms, onToggleChecked }: Props): JSX.Element {
   return (
     <>
-      {vms.toArray().map((v) => (
-        <RestaurantItem vm={v} key={v.id} onToggleChecked={onToggleChecked} />
-      ))}
+      <div className="Restaurants">
+        {vms.toArray().map((v) => (
+          <RestaurantItem vm={v} key={v.id} onToggleChecked={onToggleChecked} />
+        ))}
+      </div>
     </>
   );
 }
