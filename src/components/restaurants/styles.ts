@@ -89,4 +89,23 @@ export const styles = css`
       }
     }
   }
+
+  .Util {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .ConversionBtn {
+    appearance: none;
+    outline: none;
+    border: none;
+    background-color: #f37e00;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
 `;
