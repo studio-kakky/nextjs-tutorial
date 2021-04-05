@@ -18,16 +18,19 @@ interface Props {
 }
 
 export default function Search(props: Props): JSX.Element {
-  const masterList = props.restaurants.map(makeViewModel);
-  const [viewModels, setViewModels] = useState(new RestaurantViewModels(masterList.slice(0, 10)));
+  const initialList = props.restaurants.map(makeViewModel);
+  const [viewModels, setViewModels] = useState(new RestaurantViewModels(initialList));
   const [page, setPage] = useState(1);
   const router = useRouter();
 
-  const loadMore = () => {
-    setPage(page + 1);
-    const nextList = masterList.slice(page * 10, page * 10 + 10);
-    const nextViewModels = new RestaurantViewModels(nextList);
+  const loadMore = async () => {
+    const model = new YelpBusinessApiGetInputModel({ location: props.location, pageNumber: page + 1 });
+    const res = await getYelpBusiness(model);
+    const list = adapt(res);
+    const viewModelList = list.map(makeViewModel);
+    const nextViewModels = new RestaurantViewModels(viewModelList);
     setViewModels(viewModels.merge(nextViewModels));
+    setPage(page + 1);
   };
 
   const onToggleChecked = (id: string) => {
