@@ -74,6 +74,7 @@ export default function Search(): JSX.Element {
     <Layout>
       <Head>
         <title>{locationName}のお店の検索結果</title>
+        <meta name="description" content={`${locationName}のお店の検索結果のいちらんです。`} />
       </Head>
       <h1>{locationName}のお店の検索結果</h1>
       <Restaurants vms={viewModels} onToggleChecked={onToggleChecked} />
