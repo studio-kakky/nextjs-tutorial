@@ -32,6 +32,7 @@ export interface BusinessResponse {
       longitude: number;
     };
   };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   transactions?: any[];
   display_phone?: string;
 }

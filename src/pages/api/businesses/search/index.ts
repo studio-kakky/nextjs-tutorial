@@ -32,7 +32,7 @@ const getSlicedBusinesses = (
   return businesses.slice(offset, offset + limit);
 };
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default (req: NextApiRequest, res: NextApiResponse): void => {
   if (req.query.location === 'yokohama') {
     res.status(200).json(getResponse(getSlicedBusinesses(yokohama, req.query)));
     return;
