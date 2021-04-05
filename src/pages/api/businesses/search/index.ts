@@ -20,7 +20,6 @@ const getSlicedBusinesses = (
     }
 
     const parsed = parseInt(query.limit, 10);
-
     if (isNaN(parsed)) {
       return 20;
     }
@@ -28,9 +27,8 @@ const getSlicedBusinesses = (
     return parsed > 50 ? 50 : parsed;
   })();
 
-  const parsedOffset = parseInt(query.limit, 10);
+  const parsedOffset = parseInt(query.offset, 10);
   const offset = isNaN(parsedOffset) ? 0 : parsedOffset;
-
   return businesses.slice(offset, offset + limit);
 };
 

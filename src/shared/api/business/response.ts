@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 export interface BusinessResponse {
   rating: number;
-  price: '$' | '$$' | '$$$' | '$$$$';
+  price?: string;
   phone: string;
   id: string;
   alias: string;
-  is_closed: string;
+  is_closed: boolean;
   categories: { alias: string; title: string }[];
   review_count: number;
   name: string;
@@ -26,12 +26,14 @@ export interface BusinessResponse {
     display_address: string[];
   };
   distance: number;
-  region: {
+  region?: {
     center: {
       latitude: number;
       longitude: number;
     };
   };
+  transactions?: any[];
+  display_phone?: string;
 }
 
 export interface YelpGetBusinessSearchApiResponse {

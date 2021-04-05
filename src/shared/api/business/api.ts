@@ -1,19 +1,19 @@
 import { YelpBusinessApiGetInputModel } from './get-input-model';
 import { YelpGetBusinessSearchApiResponse } from './response';
-import { getAuthorizationHeader } from '../lib/get-authorized-header';
+import { getHostname } from '../lib/get-hostname';
 
-const endpointURL = 'https://api.yelp.com/v3/businesses/search';
+const endpointURL = `/api/businesses/search`;
 
 export const getYelpBusiness = async (
   model: YelpBusinessApiGetInputModel,
 ): Promise<YelpGetBusinessSearchApiResponse> => {
   const params = new URLSearchParams(model.getQueries());
-  const res = await fetch(`${endpointURL}?${params}`, {
+  const url = `${getHostname()}${endpointURL}?${params}`;
+  const res = await fetch(url, {
     method: 'GET',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      ...getAuthorizationHeader(),
     },
   });
 
