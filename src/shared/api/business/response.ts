@@ -40,4 +40,5 @@ export interface BusinessResponse {
 export interface YelpGetBusinessSearchApiResponse {
   total: number;
   businesses: BusinessResponse[];
+  locationName: string;
 }

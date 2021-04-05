@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-
 import Layout from '../../layout/layout';
+import Head from 'next/head';
+
 import { Restaurant } from '../../shared/models/restaurant/restaurant';
 import { getYelpBusiness } from '../../shared/api/business/api';
 import { YelpBusinessApiGetInputModel } from '../../shared/api/business/get-input-model';
@@ -14,6 +15,7 @@ import { executeExperience } from '../../shared/lib/kaizen-platform/execute-expe
 
 interface Props {
   location: string;
+  locationName: string;
   restaurants: Restaurant[];
 }
 
@@ -43,6 +45,10 @@ export default function Search(props: Props): JSX.Element {
 
   return (
     <Layout>
+      <Head>
+        <title>{props.locationName}のお店の検索結果</title>
+      </Head>
+      <h1>{props.locationName}のお店の検索結果</h1>
       <Restaurants vms={viewModels} onToggleChecked={onToggleChecked} />
       <a onClick={loadMore}>もっと見る</a>
       <style jsx>{`
@@ -64,6 +70,7 @@ export const getServerSideProps: GetServerSideProps = async (context): Promise<{
   return {
     props: {
       location,
+      locationName: res.locationName,
       restaurants: adapt(res),
     },
   };
