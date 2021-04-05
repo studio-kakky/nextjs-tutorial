@@ -1,6 +1,7 @@
 import { NextRouter } from 'next/dist/next-server/lib/router/router';
 
 export const executeExperience = (router: NextRouter): void => {
+  console.log('exece kzs');
   try {
     if (!window || !window['kzs']) {
       return;
