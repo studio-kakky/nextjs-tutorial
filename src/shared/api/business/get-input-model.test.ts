@@ -17,8 +17,8 @@ describe('YelpBusinessApiGetInputModel', () => {
         location: 'tokyo',
         lat: '1',
         lng: '1',
-        limit: '50',
-        offset: '50',
+        limit: '10',
+        offset: '10',
         price: '1',
       };
 
