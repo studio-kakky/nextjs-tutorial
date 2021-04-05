@@ -1,3 +1,9 @@
 export const getHostname = (): string => {
-  return process.env.API_HOSTNAME || '';
+  if (!process || !process.env || !process.env.VERCEL_URL) {
+    return '';
+  }
+
+  const hostname = process.env.VERCEL_URL;
+
+  return /^localhost:.*/.test(hostname) ? `http://${hostname}` : `https://${hostname}`;
 };
