@@ -39,7 +39,7 @@ export default function Search(props: Props): JSX.Element {
 
   useEffect(() => {
     executeExperience(router);
-  });
+  }, []);
 
   return (
     <Layout>

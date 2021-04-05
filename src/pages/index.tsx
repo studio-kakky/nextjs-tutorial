@@ -48,12 +48,24 @@ export default function Home({
         <ul>
           <li>
             <Link href={`/search?location=yokohama`}>
-              <a>横浜</a>
+              <a>SSR 横浜</a>
             </Link>
           </li>
           <li>
             <Link href={`/search?location=tokyo`}>
-              <a>東京</a>
+              <a>SSR 東京</a>
+            </Link>
+          </li>
+
+          <li>
+            <Link href={`/search2?location=yokohama`}>
+              <a>CSR 横浜</a>
+            </Link>
+          </li>
+
+          <li>
+            <Link href={`/search2?location=tokyo`}>
+              <a>CSR 東京</a>
             </Link>
           </li>
         </ul>
