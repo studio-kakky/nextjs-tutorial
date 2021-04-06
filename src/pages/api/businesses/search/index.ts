@@ -3,10 +3,11 @@ import { tokyo } from '../../../../../api-mock-data/business/search/tokyo';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { BusinessResponse, YelpGetBusinessSearchApiResponse } from '../../../../shared/api/business/response';
 
-const getResponse = (businesses: BusinessResponse[]): YelpGetBusinessSearchApiResponse => {
+const getResponse = (businesses: BusinessResponse[], locationName: string): YelpGetBusinessSearchApiResponse => {
   return {
     businesses,
     total: businesses.length,
+    locationName,
   };
 };
 
@@ -34,14 +35,14 @@ const getSlicedBusinesses = (
 
 export default (req: NextApiRequest, res: NextApiResponse): void => {
   if (req.query.location === 'yokohama') {
-    res.status(200).json(getResponse(getSlicedBusinesses(yokohama, req.query)));
+    res.status(200).json(getResponse(getSlicedBusinesses(yokohama, req.query), '横浜'));
     return;
   }
 
   if (req.query.location === 'tokyo') {
-    res.status(200).json(getResponse(getSlicedBusinesses(tokyo, req.query)));
+    res.status(200).json(getResponse(getSlicedBusinesses(tokyo, req.query), '東京'));
     return;
   }
 
-  res.status(200).json(getResponse([]));
+  res.status(200).json(getResponse([], ''));
 };
