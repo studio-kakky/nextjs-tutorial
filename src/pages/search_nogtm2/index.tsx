@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import Layout from '../../layout/layout';
+import LayoutNoGTM from '../../layout/layout_nogtm';
 import Head from 'next/head';
 import { getYelpBusiness } from '../../shared/api/business/api';
 import { YelpBusinessApiGetInputModel } from '../../shared/api/business/get-input-model';
@@ -9,7 +9,6 @@ import { adapt } from '../../shared/models/restaurant/adapt';
 import { makeViewModel } from '../../components/restaurants/view-model/view-model';
 import { RestaurantViewModels } from '../../components/restaurants/view-model/view-models';
 import Restaurants from '../../components/restaurants/restaurants';
-import { executeExperience } from '../../shared/lib/kaizen-platform/execute-experience';
 
 interface PageData {
   viewModels: RestaurantViewModels;
@@ -56,11 +55,7 @@ export default function Search(): JSX.Element {
 
   useEffect(() => {
     if (!!location) {
-      fetch().then(() => {
-        requestAnimationFrame(() => {
-          executeExperience(router);
-        });
-      });
+      fetch();
     }
   }, [location]);
 
@@ -71,7 +66,7 @@ export default function Search(): JSX.Element {
   }, [page]);
 
   return (
-    <Layout>
+    <LayoutNoGTM>
       <Head>
         <title>{locationName}のお店の検索結果</title>
         <meta name="description" content={`${locationName}のお店の検索結果のいちらんです。`} />
@@ -84,6 +79,6 @@ export default function Search(): JSX.Element {
           cursor: pointer;
         }
       `}</style>
-    </Layout>
+    </LayoutNoGTM>
   );
 }

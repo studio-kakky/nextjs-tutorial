@@ -24,7 +24,7 @@ export default function RestaurantItem({ vm, onToggleChecked }: Props): JSX.Elem
       </header>
       <div className="RestaurantListItem_Body">
         <div className="RestaurantThumbnail">
-          <img className="RestaurantThumbnail_img" src={vm.thumbNailUrl} />
+          <img className="RestaurantThumbnail_img" src={vm.thumbNailUrl} alt="" />
         </div>
         <table className="RestaurantInfoTable">
           <tbody>
