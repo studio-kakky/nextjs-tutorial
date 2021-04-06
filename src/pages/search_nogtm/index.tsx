@@ -55,8 +55,6 @@ export default function Search(props: Props): JSX.Element {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context): Promise<{ props: Props }> => {
-  context.res.setHeader('Cache-Control', 's-maxage=1, stale-while-revalidate');
-
   const location = context.query.location as string;
   const model = new YelpBusinessApiGetInputModel({ location });
   const res = await getYelpBusiness(model);
